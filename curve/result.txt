@@ -1,0 +1,54 @@
+x:00000001
+y:00000000
+x:00000001
+y:00000001
+x:00000010
+y:00000001
+x:00000010
+y:00000011
+zCodeLow:0000000000000000
+zCodeHigh:0000000000001011
+loop dimension:0
+before:00000011
+dimension:0
+after:00000001
+zCodeLow:0000000000000000
+zCodeHigh:0000000000000011
+loop dimension:0
+loop dimension:1
+loop dimension:0
+before:00000001
+dimension:0
+after:00000000
+zCodeLow:0000000000000000
+zCodeHigh:0000000000000001
+loop dimension:0
+loop dimension:1
+loop dimension:0
+loop dimension:1
+zCodeLow:0000000000000010
+zCodeHigh:0000000000000011
+loop dimension:0
+loop dimension:1
+loop dimension:0
+loop dimension:1
+zCodeLow:0000000000001000
+zCodeHigh:0000000000001011
+loop dimension:0
+loop dimension:1
+loop dimension:0
+before:00000011
+dimension:0
+after:00000010
+zCodeLow:0000000000001000
+zCodeHigh:0000000000001001
+loop dimension:0
+loop dimension:1
+loop dimension:0
+loop dimension:1
+zCodeLow:0000000000001010
+zCodeHigh:0000000000001011
+loop dimension:0
+loop dimension:1
+loop dimension:0
+loop dimension:1
