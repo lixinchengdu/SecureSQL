@@ -106,7 +106,7 @@ std::vector<uint8_t> zCurveDecode16(std::string pattern, uint16_t zCode) {
     return {x,y};
 }
 
-std::vector<Range> getZCurveRanges(std::string pattern, uint8_t highstBit, QueryRec queryRec) {
+std::vector<Range16> getZCurveRanges16(std::string pattern, uint8_t highstBit, QueryRec queryRec) {
     uint8_t xLow = queryRec.xLow;
     uint8_t yLow = queryRec.yLow;
     uint8_t xHigh = queryRec.xHigh;
@@ -140,7 +140,7 @@ std::vector<Range> getZCurveRanges(std::string pattern, uint8_t highstBit, Query
     }
 
     // check if this is a single point
-    if (index >= highstBit - 1) {
+    if (index >= highstBit - 1 && zCodeLow == zCodeHigh) {
         return {{zCodeLow, zCodeHigh}};
     }
 
@@ -148,14 +148,14 @@ std::vector<Range> getZCurveRanges(std::string pattern, uint8_t highstBit, Query
     bool allOnes = true;
     bool allNulls = true;
 
-    for (int i = 0; i < highstBit; ++i) {
+    for (int i = 0; i < highstBit - index; ++i) {
         if (!((zCodeHigh >> i) & 1)) {
             allOnes = false;
             break;
         }
     }
 
-    for (int i = 0; i < highstBit; ++i) {
+    for (int i = 0; i < highstBit - index; ++i) {
         if ((zCodeLow >> i) & 1) {
             allNulls = false;
             break;
@@ -168,9 +168,9 @@ std::vector<Range> getZCurveRanges(std::string pattern, uint8_t highstBit, Query
 
     auto queryBoxes = cutBox(pattern, hyperPlaneDimension, hyperplaneCutIndex, queryRec);
     std::cout << "left" << std::endl;
-    auto rangeLeft = getZCurveRanges(pattern, highstBit, queryBoxes.first);
+    auto rangeLeft = getZCurveRanges16(pattern, highstBit, queryBoxes.first);
     std::cout << "right" << std::endl;
-    auto rangeRight = getZCurveRanges(pattern, highstBit, queryBoxes.second);
+    auto rangeRight = getZCurveRanges16(pattern, highstBit, queryBoxes.second);
     
     auto lastLeft = rangeLeft.back().end;
     auto firstRight = rangeRight.front().start;
