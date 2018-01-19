@@ -18,7 +18,7 @@ struct Coordinate {
     uint8_t y;
 };
 
-struct Range {
+struct Range16 {
     uint16_t start;
     uint16_t end;
 };
@@ -30,8 +30,8 @@ uint16_t zCurveEncode16(std::string pattern, uint8_t x, uint8_t y);
 
 std::vector<uint8_t> zCurveDecode16(std::string pattern, uint16_t zCode);
 
-std::vector<Range> getZCurveRanges(std::string pattern, uint8_t highstBit, QueryRec queryRec); 
+std::vector<Range16> getZCurveRanges16(std::string pattern, uint8_t highstBit, QueryRec queryRec); 
 
-void inline printRange (Range range) {
+void inline printRange16 (Range16 range) {
     std::cout << "[" << range.start << ", " << range.end << "]" << std::endl;
 }
